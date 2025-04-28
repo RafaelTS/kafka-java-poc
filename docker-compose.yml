@@ -27,13 +27,14 @@ services:
     image: splunk/splunk:latest
     container_name: splunk
     environment:
-      SPLUNK_START_ARGS: "--accept-license"
+      SPLUNK_START_ARGS: "--accept-license --no-prompt"
       SPLUNK_PASSWORD: "changeme123"
+      SPLUNK_HEC_ENABLE: "true"
+      SPLUNK_HEC_TOKEN: "meu-token-super-seguro"
     ports:
-      - "8000:8000"   # UI do Splunk
-      - "8088:8088"   # HEC endpoint
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
+      - "8000:8000"
+      - "8088:8088"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
