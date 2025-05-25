@@ -1,0 +1,14 @@
+<configuration>
+    <appender name="splunk" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
+        <url>http://splunk:8088</url>
+        <token>meu-token-splunk</token>
+        <source>java-app</source>
+        <sourcetype>_json</sourcetype>
+        <index>main</index>
+        <batch_size_count>1</batch_size_count>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="splunk"/>
+    </root>
+</configuration>
