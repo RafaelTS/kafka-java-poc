@@ -1,6 +1,8 @@
 package br.com.rafael.kafka_java_poc.controller;
 
 import br.com.rafael.kafka_java_poc.producer.KafkaProducerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +19,12 @@ public class MessageController {
         this.kafkaProducerService = kafkaProducerService;
     }
 
+    private static final Logger log = LoggerFactory.getLogger(MessageController.class);
+
     @PostMapping
     public ResponseEntity<String> sendMessage(@RequestParam String message) {
-        kafkaProducerService.sendMessage("poc-topic", message);
-        return ResponseEntity.ok("Message sent to Kafka topic!");
+        // Aqui vai o log!
+        log.info("Mensagem recebida no controller: {}", message);
+        return ResponseEntity.ok("Mensagem enviada: " + message);
     }
 }
