@@ -4,7 +4,7 @@
         <token>meu-token-splunk</token>
         <source>java-app</source>
         <sourcetype>_json</sourcetype>
-        <index>main</index>
+        <index>Default</index>
         <batch_size_count>1</batch_size_count>
     </appender>
 
