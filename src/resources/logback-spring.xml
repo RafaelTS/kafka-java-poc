@@ -1,6 +1,6 @@
 <configuration>
     <appender name="splunk" class="com.splunk.logging.HttpEventCollectorLogbackAppender">
-        <url>http://localhost:8088</url> <!-- ou 'http://splunk:8088' se for container com DNS correto -->
+        <url>http://localhost:8088</url>
         <token>meu-token-splunk</token>
         <source>java-app</source>
         <sourcetype>_json</sourcetype>
@@ -10,6 +10,9 @@
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </layout>
+        <encoder>
+            <pattern>########## FUNCIONANDO ########## %msg%n</pattern>
+        </encoder>
     </appender>
 
     <root level="INFO">

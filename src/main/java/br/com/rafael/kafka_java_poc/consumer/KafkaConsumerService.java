@@ -12,6 +12,7 @@ public class KafkaConsumerService {
 
     @KafkaListener(topics = "poc-topic", groupId = "kafka-poc-group")
     public void listen(String message) {
+        System.out.println("Mensagem recebida no Kafka: " + message);
         logger.info("Received message: {}", message); // Isso será capturado pelos logs do container
     }
 }
