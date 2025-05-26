@@ -23,8 +23,9 @@ public class MessageController {
 
     @PostMapping
     public ResponseEntity<String> sendMessage(@RequestParam String message) {
-        // Aqui vai o log!
+
         log.info("Mensagem recebida no controller: {}", message);
+        kafkaProducerService.sendMessage("meu-topico", message);
         return ResponseEntity.ok("Mensagem enviada: " + message);
     }
 }
